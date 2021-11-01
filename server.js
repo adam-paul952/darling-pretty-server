@@ -17,7 +17,8 @@ app.get("/", (req, res) => {
   res.send("<h1>Welcome to Darling Pretty's Server</h1>");
 });
 
-require("./app/routes/darlingPretty.routes")(app);
+require("./app/routes/clientInfo.routes")(app);
+require("./app/routes/contactForm.routes")(app);
 
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}.`);

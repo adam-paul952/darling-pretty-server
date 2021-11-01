@@ -1,5 +1,5 @@
 module.exports = (app) => {
-  const clientInfo = require("../controllers/darlingPretty.controller");
+  const clientInfo = require("../controllers/clientInfo.controller");
 
   // Create client information
   app.post("/clientinfo", clientInfo.create);
@@ -9,9 +9,6 @@ module.exports = (app) => {
 
   // Find a single client by Id
   app.get("/clientinfo/:clientId", clientInfo.findOneById);
-
-  // Update client information
-  app.put("/clientinfo/:clientId");
 
   // Delete client information
   app.delete("/clientinfo/:clientId", clientInfo.delete);

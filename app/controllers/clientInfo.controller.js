@@ -1,4 +1,4 @@
-const ClientInfo = require("../models/darlingPretty.model");
+const ClientInfo = require("../models/clientInfo.model");
 
 // Create new client
 exports.create = async (req, res) => {
@@ -43,7 +43,7 @@ exports.findAll = async (req, res) => {
 
 // Find a single client by ID
 exports.findOneById = async (req, res) => {
-  ClientInfo.findById(req.params.clientId, (err, data) => {
+  await ClientInfo.findById(req.params.clientId, (err, data) => {
     if (err) {
       if (err) {
         res.status(500).send({
@@ -56,7 +56,7 @@ exports.findOneById = async (req, res) => {
 
 // Delete a client by ID
 exports.delete = async (req, res) => {
-  ClientInfo.deleteById(req.params.clientId, (err, data) => {
+  await ClientInfo.deleteById(req.params.clientId, (err, data) => {
     if (err) {
       if (err) {
         res.status(500).send({
