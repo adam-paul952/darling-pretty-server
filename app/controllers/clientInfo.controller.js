@@ -2,20 +2,7 @@ const ClientInfo = require("../models/clientInfo.model");
 
 // Create new client
 exports.create = async (req, res) => {
-  const newClient = {
-    _id: req.body.email,
-    name: { first: req.body.firstName, last: req.body.lastName },
-    email: req.body.email,
-    phoneNumber: req.body.phone,
-    billing: {
-      address1: req.body.address1,
-      address2: req.body.address2,
-      city: req.body.city,
-      province: req.body.province,
-      postalCode: req.body.postalCode,
-      country: req.body.country,
-    },
-  };
+  const newClient = req.body;
   await ClientInfo.create(newClient, (err, data) => {
     if (err) {
       res.status(500).send({

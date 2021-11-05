@@ -5,15 +5,18 @@ const ClientInfo = {};
 // Create client profile
 ClientInfo.create = async (newClient, result) => {
   dbParams = await connection.setupDb();
-  await dbParams.col.insertOne(newClient, (err, res) => {
-    if (err) {
-      console.log(`Error: `, err);
-      result(err, null);
-      return;
+  await dbParams.col.insertOne(
+    { _id: newClient.email, ...newClient },
+    (err, res) => {
+      if (err) {
+        console.log(`Error: `, err);
+        result(err, null);
+        return;
+      }
+      console.log(newClient);
+      result(null, { _id: newClient.email, ...newClient });
     }
-    console.log(newClient);
-    result(null, newClient);
-  });
+  );
 };
 
 // Find all clients
