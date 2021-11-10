@@ -47,6 +47,24 @@ ClientInfo.findById = async (id, result) => {
   });
 };
 
+// Updaye client by id
+ClientInfo.updateById = async (id, client, result) => {
+  dbParams = await connection.setupDb();
+  await dbParams.col.findOneAndUpdate(
+    { _id: id },
+    { $set: client },
+    (err, res) => {
+      if (err) {
+        console.log(err);
+        result(err, null);
+        return;
+      }
+      console.log(`Updated Client:`, client);
+      result(null, { returnNewDocument: true });
+    }
+  );
+};
+
 // Delete client by id
 ClientInfo.deleteById = async (id, result) => {
   dbParams = await connection.setupDb();

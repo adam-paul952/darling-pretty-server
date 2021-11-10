@@ -8,7 +8,11 @@ exports.sendEmail = (req, res) => {
     from: process.env.EMAIL_USER,
     to: process.env.EMAIL_USER,
     subject: `${name} has sent you a message from Darling Pretty`,
-    text: `Email: ${email} Subject: ${subject} Message: ${message}`,
+    text: `
+          Email: ${email} 
+          Subject: ${subject} 
+          Message: ${message}
+          `,
   };
 
   transporter.sendEmail().sendMail(mailOptions, (err, info) => {
