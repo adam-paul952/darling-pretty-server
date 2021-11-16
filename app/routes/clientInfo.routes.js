@@ -1,8 +1,10 @@
+const checkJwt = require("../auth/checkJWT");
+
 module.exports = (app) => {
   const clientInfo = require("../controllers/clientInfo.controller");
 
   // Create client information
-  app.post("/clientinfo", clientInfo.create);
+  app.post("/clientinfo", checkJwt, clientInfo.create);
 
   // Read all client information
   app.get("/clientinfo", clientInfo.findAll);
