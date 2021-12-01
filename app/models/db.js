@@ -11,7 +11,8 @@ exports.setupDb = async () => {
     console.log("Successfully connected to server");
     const db = client.db(dbName);
     const col = db.collection("clientinfo");
-    return { client: client, col: col };
+    const col2 = db.collection("sessionInfo");
+    return { client: client, col: col, col2: col2 };
   } catch (err) {
     console.log(err.stack);
   }

@@ -22,6 +22,7 @@ app.get("/", (req, res) => {
 
 require("./app/routes/clientInfo.routes")(app);
 require("./app/routes/contactForm.routes")(app);
+require("./app/routes/sessionInfo.routes")(app);
 
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}.`);
