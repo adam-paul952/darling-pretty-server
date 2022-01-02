@@ -4,12 +4,15 @@ module.exports = (app) => {
   // Create session information
   app.post("/sessioninfo", sessionInfo.create);
 
-  //   // Read all session information
-  //   app.get("/sessioninfo", sessionInfo.findAll);
+  // Read all session information
+  app.get("/sessioninfo", sessionInfo.findAll);
 
-  //   // Update session information
-  //   app.put("/sessioninfo/:id", sessionInfo.update);
+  // Read session information by date
+  app.get("/sessioninfo/:id", sessionInfo.findById);
 
-  //   // Delete session information
-  //   app.delete("/sessioninfo/:id", sessionInfo.delete);
+  // Update session information
+  app.put("/sessioninfo/:id", sessionInfo.update);
+
+  // Delete session information
+  app.delete("/sessioninfo/:id", sessionInfo.delete);
 };
