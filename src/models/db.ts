@@ -1,7 +1,7 @@
 import { MongoClient } from "mongodb";
 
 const setupDb = async () => {
-  const url = process.env.DB_URL;
+  const url = process.env.DB_URL!;
   const dbName = "darling-pretty";
 
   try {
@@ -13,6 +13,7 @@ const setupDb = async () => {
     return { client: client, col: col };
   } catch (err) {
     console.log(err);
+    throw err;
   }
 };
 
